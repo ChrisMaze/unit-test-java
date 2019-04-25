@@ -36,7 +36,6 @@ public class Answer {
             throw new OutOfRangeAnswerException("Answer format is incorrect");
         }
     }
-
     public Record check(Answer inputAnswer) {
         Record record = new Record();
         this.numList.forEach(num -> {
