@@ -59,6 +59,7 @@ public class AnswerTest {
         validateGuessNumber(inputAnserStr, exceptValue);
     }
 
+
     public void validateGuessNumber(String inputAnswerStr, String exceptValue) {
         Answer inputAnswer = Answer.createAnswer(inputAnswerStr);
         Record result = actualAnswer.check(inputAnswer);
