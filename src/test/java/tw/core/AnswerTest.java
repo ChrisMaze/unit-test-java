@@ -2,23 +2,37 @@ package tw.core;
 
 import org.junit.Before;
 import org.junit.Test;
+import tw.core.exception.OutOfRangeAnswerException;
+import tw.core.generator.AnswerGenerator;
 import tw.core.model.Record;
 
-import java.util.List;
+import java.util.ArrayList;
 
+import static junit.framework.TestCase.fail;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * 在AnswerTest文件中完成Answer中对应的单元测试
  */
 public class AnswerTest {
     private Answer actualAnswer;
-    //private Answer wrongAnswer;
+    private Answer wrongAnswer;
     @Before
     public void setList()
     {
         actualAnswer = Answer.createAnswer("1 2 3 4");
-        //wrongAnswer = Answer.createAnswer("5 6 7 8");
+        wrongAnswer = Answer.createAnswer("11 10 7 8");
+    }
+    @Test
+    public void testExceptionMessage() {
+        try {
+            wrongAnswer.validate();
+            fail("Expected an IndexOutOfBoundsException to be thrown");
+        } catch (OutOfRangeAnswerException anOutOfRangeAnswerException) {
+            assertThat(anOutOfRangeAnswerException.getMessage(), is("Answer format is incorrect"));
+        }
     }
     @Test
     public void should_return_0A0B_when_all_number_is_incorrect(){
