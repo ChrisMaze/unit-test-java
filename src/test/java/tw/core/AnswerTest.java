@@ -38,6 +38,12 @@ public class AnswerTest {
         String exceptValue = "0A4B";
         validateGuessNumber(inputAnserStr, exceptValue);
     }
+    @Test
+    public void should_return_1A2B_when_all_number_is_only_inculd(){
+        String inputAnserStr = "1 3 2 9";
+        String exceptValue = "1A2B";
+        validateGuessNumber(inputAnserStr, exceptValue);
+    }
 
     public void validateGuessNumber(String inputAnswerStr, String exceptValue) {
         Answer inputAnswer = Answer.createAnswer(inputAnswerStr);
